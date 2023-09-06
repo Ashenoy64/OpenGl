@@ -14,8 +14,7 @@ void Animation()
 	const int curMs = glutGet(GLUT_ELAPSED_TIME);
 	const double  delta = (curMs - prvMs) / 1000.0;
 
-	angle += ChangeInAngle;
-	x += 2 * PI * RADIUS * ChangeInAngle / 360;
+	
 	glutPostRedisplay();
 
 }

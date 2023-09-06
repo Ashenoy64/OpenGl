@@ -52,7 +52,67 @@ void InitLight()
 	glEnable(GL_COLOR_MATERIAL); // tells opengl to maintain the original color of the object
 }
 
+void GenerateSpine()
+{
+	glPushMatrix();
+		glScalef(1, 2, 1);
+		glutSolidSphere(0.05, 50, 50);
+		glTranslatef(0, 0.1, 0.0);
+		glutSolidSphere(0.05, 50, 50);
+		glTranslatef(0, 0.1, 0.0);
+		glutSolidSphere(0.05, 50, 50);
+	glPopMatrix();
+}
 
+void GenerateHead()
+{
+	glPushMatrix();
+		glTranslatef(0, 0.75, 0.0);
+		glutSolidSphere(0.1, 50, 50);
+		glScalef(0.5, 1.5, 0.5);
+		glTranslatef(0, -0.115, 0.0);
+		glutSolidSphere(0.05, 50, 50);
+	glPopMatrix();
+}
+
+
+void GenerateLeftArm()
+{
+	glPushMatrix();
+	glTranslatef(-0.12 0.5, 0);
+	glScalef(3, 0.5, 1);
+	//glutSolidSphere(0.05, 50, 50);
+	
+	glPushMatrix();
+		glRotatef(90,0,1,0);
+		glutSolidSphere(0.05, 50, 50);
+	glPopMatrix();
+
+	glPopMatrix();
+}
+
+void GenerateLeftLeg()
+{
+
+}
+
+void GenerateRighArm()
+{
+
+}
+
+void GenerateRightLeg()
+{
+
+}
+
+
+void GenerateSkeleton() {
+	
+	GenerateSpine();
+	GenerateHead();
+	GenerateLeftArm();
+}
 
 void MainRenderSequence(float wheelRotation, float translationX)
 {
@@ -60,7 +120,7 @@ void MainRenderSequence(float wheelRotation, float translationX)
 	//ChangeCameraPosition(1.0, 2.0, 3.0);
 	InitLight();
 
-	GenerateWheel(wheelRotation, translationX);
+	GenerateSkeleton();
 
 	glFlush();
 }
